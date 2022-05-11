@@ -9,15 +9,39 @@ const HookUseReducer = () => {
     })
 
     // 2 - avançando no useReducer
-    const initialTaks = [
+    const initialTasks = [
         {id: 1, text: "Fazer alguma coisa"},
         {id: 2, text: "Fazer outra coisa"},
     ]
 
-    const taskReducer = (state, action) => {};
+    const taskReducer = (state, action) => {
+        switch (action.type) {
+            case "ADD":
+                const newTask = {
+                    id: Math.random(),
+                    text: taskText,
+                }
+                setTaskText("");
+                return [...state, newTask]
+            case "DELETE":
+                return state.filter((task) => task.id !== action.id);
+            default:
+                return state;
+        }
+    };
 
-    const [tasks, dispatchTasks] = useReducer(taskReducer, initialTaks);
     const [taskText, setTaskText] = useState("");
+    const [tasks, dispatchTasks] = useReducer(taskReducer, initialTasks);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        dispatchTasks({type: "ADD"})
+    }
+
+    const removeTask = (id) => {
+        dispatchTasks({type: "DELETE", id})
+    }
 
     return (
         <div>
@@ -26,6 +50,11 @@ const HookUseReducer = () => {
             <button onClick={dispatch}>Alterar número!</button>
 
             <h3>Tarefas:</h3>
+            {tasks.map((task) => (
+                <li key={task.id} onDoubleClick={() => removeTask(task.id)}>{task.text}</li>
+            ))}
+
+
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
