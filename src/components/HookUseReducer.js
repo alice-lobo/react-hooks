@@ -1,6 +1,6 @@
 import {useReducer, useState} from "react";
 import React from "react";
-
+/* eslint-disable */
 const HookUseReducer = () => {
 
     // 1- começando com o useReducer
