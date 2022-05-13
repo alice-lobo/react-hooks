@@ -11,8 +11,7 @@ const About = () => {
         <div>
             <h2>About</h2>
             <p>Valor do contexto: {contextValue}</p>
-        </div>
-        
+        </div> 
     )
 }
 
