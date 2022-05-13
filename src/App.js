@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HookUseContext } from './components/HookUseContext';
 import './App.css';
 
 //pages
@@ -10,6 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <HookUseContext>
         <h1>React Hooks</h1>
         <BrowserRouter>
           <ul>
@@ -25,6 +27,7 @@ class App extends Component {
             <Route path="/about" element={<About />} />
           </Routes>
         </BrowserRouter>
+        </HookUseContext>
       </div>
     );
   }
