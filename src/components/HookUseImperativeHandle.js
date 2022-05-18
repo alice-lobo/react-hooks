@@ -10,6 +10,7 @@ const HookUseImperativeHandle = () => {
             <h2>useImperativeHandle</h2>
             <SomeComponent ref={componentRef }/>
             <button onClick={()=> componentRef .current.validate()}>Validate</button>
+            <hr />
         </div>
     )
 }
